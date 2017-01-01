@@ -8,6 +8,8 @@
 
 import UIKit
 import ESTabBarController
+import Firebase
+import FirebaseAuth
 
 class ViewController: UIViewController {
 
@@ -51,6 +53,20 @@ class ViewController: UIViewController {
             let imageViewController = self.storyboard?.instantiateViewController(withIdentifier: "ImageSelect")
             self.present(imageViewController!, animated: true, completion: nil)
         }, at: 1)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //currentUserがnilならログインしていない
+        if FIRAuth.auth()?.currentUser == nil{
+            //ログインしていなければログイン画面を表示する
+            //viewDidAppear内でpresent()を呼び出しても表示されないためメソッドが終了してから呼ばれるようにする
+            DispatchQueue.main.async {
+                let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login")
+                self.present(loginViewController!, animated:true, completion:nil)
+            }
+        }
     }
 }
 
