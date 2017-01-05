@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		808A80F81E1E962B00D43DFD /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808A80F71E1E962B00D43DFD /* CommentViewController.swift */; };
 		80DC0EF01E195CD000CF3B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC0EEF1E195CD000CF3B1D /* AppDelegate.swift */; };
 		80DC0EF21E195CD000CF3B1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DC0EF11E195CD000CF3B1D /* ViewController.swift */; };
 		80DC0EF51E195CD000CF3B1D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80DC0EF31E195CD000CF3B1D /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		808A80F71E1E962B00D43DFD /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		80DC0EEC1E195CD000CF3B1D /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80DC0EEF1E195CD000CF3B1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80DC0EF11E195CD000CF3B1D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				80F311EE1E1AB7F700DFD655 /* AdobeCreativeSDKCore.framework */,
 				80DC0EEF1E195CD000CF3B1D /* AppDelegate.swift */,
 				80DC0EF11E195CD000CF3B1D /* ViewController.swift */,
+				808A80F71E1E962B00D43DFD /* CommentViewController.swift */,
 				80F3121A1E1BEE6700DFD655 /* PostTableViewCell.swift */,
 				80F3121C1E1BEE7200DFD655 /* PostTableViewCell.xib */,
 				80DC0EF31E195CD000CF3B1D /* Main.storyboard */,
@@ -344,6 +347,7 @@
 				80F3121B1E1BEE6700DFD655 /* PostTableViewCell.swift in Sources */,
 				80DC0F0A1E195EB400CF3B1D /* SettingViewController.swift in Sources */,
 				80DC0F041E195E1400CF3B1D /* HomeViewController.swift in Sources */,
+				808A80F81E1E962B00D43DFD /* CommentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

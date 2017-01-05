@@ -17,6 +17,8 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var displayNameTextField: UITextField!
     
     @IBAction func handleChangeButton(_ sender: AnyObject) {
+        
+        
         if let displayName = displayNameTextField.text {
             
             //表示名が入力されていない時はHUDを出して何もしない
