@@ -11,11 +11,15 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-class HomeViewController: UIViewController,UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+    
     
     @IBOutlet weak var tableView: UITableView!
     
+    //@IBOutlet weak var tableView: UITableVivar?
+    
     var postArray: [PostData] = []
+    var postData: [PostData] = []
     
     // FIRDatabaseのobserveEventの登録状態を表す
     var observing = false
@@ -169,38 +173,38 @@ class HomeViewController: UIViewController,UITableViewDataSource, UITableViewDel
     func commentButton(sender: UIButton, event:UIEvent) {
         print("DEBUG_PRINT: commentボタンがタップされました。")
         
-        let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier: "Comment")
-        self.present(nextView, animated: true, completion: nil)
-
-        
         // タップされたセルのインデックスを求める
         let touch = event.allTouches?.first
         let point = touch!.location(in: self.tableView)
         let indexPath = tableView.indexPathForRow(at: point)
         
         // 配列からタップされたインデックスのデータを取り出す
-        let postData = postArray[indexPath!.row]
+        postData = [postArray[indexPath!.row]]
+        
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "Comment") as! CommentViewController
+        self.present(nextView, animated: true, completion: nil)
+        nextView.post =  postData
         
         // Firebaseに保存するデータの準備
-        if let uid = FIRAuth.auth()?.currentUser?.uid {
-            postData.comment.append(uid)
+        //if let uid = FIRAuth.auth()?.currentUser?.uid {
+        //postData.comment.append(uid)
             
             // 増えたcommentをFirebaseに保存する
             //let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(postData.id!)
             //let comment = ["comment": postData.comment]
             //postRef.updateChildValues(comment)
             
-        }
+        //}
 
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Comment" {
-            let nextView: CommentViewController = segue.destination as! CommentViewController
-            //nextView.name = text.text!
-        }
-    }
+   // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //if segue.identifier == "Comment" {
+            //let nextView: CommentViewController = segue.destination as! CommentViewController
+            //nextView.post = postData
+        //}
+    //}
 
 
 

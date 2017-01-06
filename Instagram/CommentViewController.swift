@@ -21,13 +21,25 @@ class CommentViewController: UIViewController {
     @IBAction func handlePostButton(_ sender: Any) {
         //postDataに必要な情報を取得しておく
         //let time = NSDate.timeIntervalSinceReferenceDate
-        //let name = FIRAuth.auth()?.currentUser?.displayName
+        let user = FIRAuth.auth()?.currentUser?.displayName
         
         //辞書を作成してFirebaseに保存する
         //let postRef = FIRDatabase.database().reference().child(Const.PostPath)
         //let postData = ["caption": textField.text!, "image": imageString, "time": String(time), "name": name! ]
         //postRef.childByAutoId().setValue(postData)
-    
+        
+        // Firebaseに保存するデータの準備
+        if let uid = FIRAuth.auth()?.currentUser?.uid {
+            //post.comment.append(uid)
+            
+            // 増えたcommentとuserをFirebaseに保存する
+            let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(post.id!)
+            let comment = ["comment": commentTextField.text!, "user": user!]
+            //let comment = ["comment": post.comment, "user": post.Data.user]
+            postRef.updateChildValues(comment)
+            postRef.updateChildValues(user)
+            
+        }
         
         //HUDで投稿完了を表示する
         SVProgressHUD.showSuccess(withStatus: "投稿しました")
