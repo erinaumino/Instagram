@@ -16,6 +16,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var comment: UIButton!
+    @IBOutlet weak var commentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,6 +50,9 @@ class PostTableViewCell: UITableViewCell {
             let buttonImage = UIImage(named: "like_none")
             self.likeButton.setImage(buttonImage, for: UIControlState.normal)
         }
+        
+        self.commentLabel.text = "\(postData.user) : \(postData.comment)"
+
     }
     
 }

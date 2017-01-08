@@ -16,7 +16,7 @@ import SVProgressHUD
 class CommentViewController: UIViewController {
     @IBOutlet weak var commentTextField: UITextField!
     
-    var post: [PostData] = []
+    var post:PostData? = nil
     
     @IBAction func handlePostButton(_ sender: Any) {
         //postDataに必要な情報を取得しておく
@@ -33,11 +33,11 @@ class CommentViewController: UIViewController {
             //post.comment.append(uid)
             
             // 増えたcommentとuserをFirebaseに保存する
-            let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(post.id!)
-            let comment = ["comment": commentTextField.text!, "user": user!]
+            let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(post!.id!)
+            let comment = ["user": user!, "comment": commentTextField.text!, ]
             //let comment = ["comment": post.comment, "user": post.Data.user]
             postRef.updateChildValues(comment)
-            postRef.updateChildValues(user)
+
             
         }
         
