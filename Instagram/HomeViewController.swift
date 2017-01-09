@@ -177,6 +177,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         let touch = event.allTouches?.first
         let point = touch!.location(in: self.tableView)
         let indexPath = tableView.indexPathForRow(at: point)
+        
         // 配列からタップされたインデックスのデータを取り出す
         let postData = postArray[indexPath!.row]
         

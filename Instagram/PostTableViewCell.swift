@@ -50,8 +50,6 @@ class PostTableViewCell: UITableViewCell {
             let buttonImage = UIImage(named: "like_none")
             self.likeButton.setImage(buttonImage, for: UIControlState.normal)
         }
-        
-        self.commentLabel.text = "\(postData.user) : \(postData.comment)"
 
     }
     

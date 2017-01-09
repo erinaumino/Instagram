@@ -21,12 +21,7 @@ class CommentViewController: UIViewController {
     @IBAction func handlePostButton(_ sender: Any) {
         //postDataに必要な情報を取得しておく
         //let time = NSDate.timeIntervalSinceReferenceDate
-        let user = FIRAuth.auth()?.currentUser?.displayName
-        
-        //辞書を作成してFirebaseに保存する
-        //let postRef = FIRDatabase.database().reference().child(Const.PostPath)
-        //let postData = ["caption": textField.text!, "image": imageString, "time": String(time), "name": name! ]
-        //postRef.childByAutoId().setValue(postData)
+        let name = FIRAuth.auth()?.currentUser?.displayName
         
         // Firebaseに保存するデータの準備
         if let uid = FIRAuth.auth()?.currentUser?.uid {
@@ -34,9 +29,9 @@ class CommentViewController: UIViewController {
             
             // 増えたcommentとuserをFirebaseに保存する
             let postRef = FIRDatabase.database().reference().child(Const.PostPath).child(post!.id!)
-            let comment = ["user": user!, "comment": commentTextField.text!, ]
-            //let comment = ["comment": post.comment, "user": post.Data.user]
-            postRef.updateChildValues(comment)
+            let caption_value = (post?.caption!)! + "\n" +  name! + ":" + commentTextField.text!
+            let caption = ["caption": caption_value]; postRef.updateChildValues(caption)
+            postRef.updateChildValues(caption)
 
             
         }
